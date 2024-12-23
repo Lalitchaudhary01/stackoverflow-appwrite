@@ -53,7 +53,6 @@ export default async function createQuestionCollection() {
 
   // create Indexes
 
-  /*
   await Promise.all([
     databases.createIndex(
       db,
@@ -61,7 +60,7 @@ export default async function createQuestionCollection() {
       "title",
       IndexType.Fulltext,
       ["title"],
-      ['asc']
+      ["asc"]
     ),
     databases.createIndex(
       db,
@@ -69,8 +68,7 @@ export default async function createQuestionCollection() {
       "content",
       IndexType.Fulltext,
       ["content"],
-      ['asc']
-    )
-  ])
-    */
+      ["asc"]
+    ),
+  ]);
 }
