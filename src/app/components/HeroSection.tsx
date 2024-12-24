@@ -19,7 +19,7 @@ export default async function HeroSection() {
             products={questions.documents.map(q => ({
                 title: q.title,
                 link: `/questions/${q.$id}/${slugify(q.title)}`,
-                thumbnail: storage.getFilePreview(questionAttachmentBucket, q.attachmentId),
+                thumbnail: storage.getFilePreview(questionAttachmentBucket, q.attachmentId).href,
             }))}
         />
     );

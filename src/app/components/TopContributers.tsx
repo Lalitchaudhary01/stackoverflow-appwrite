@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { AnimatedList } from "@/components/magicui/animated-list";
+import { AnimatedList } from "@/components/ui/animated-list";
 import { users } from "@/models/server/config";
 import { Models, Query } from "node-appwrite";
 import { UserPrefs } from "@/store/Auth";

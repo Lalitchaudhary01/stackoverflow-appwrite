@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
+import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
