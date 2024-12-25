@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BorderBeam } from "./magicui/border-beam";
+import { BorderBeam } from "./ui/border-beam";
 import Link from "next/link";
 import { Models } from "appwrite";
 import slugify from "@/utils/slugify";
@@ -48,7 +48,7 @@ const QuestionCard = ({ ques }: { ques: Models.Document }) => {
                     <div className="ml-auto flex items-center gap-1">
                         <picture>
                             <img
-                                src={avatars.getInitials(ques.author.name, 24, 24).href}
+                                src={avatars.getInitials(ques.author.name, 24, 24)}
                                 alt={ques.author.name}
                                 className="rounded-lg"
                             />

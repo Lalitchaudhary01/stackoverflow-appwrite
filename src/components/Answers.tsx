@@ -11,6 +11,7 @@ import Comments from "./Comments";
 import slugify from "@/utils/slugify";
 import Link from "next/link";
 import { IconTrash } from "@tabler/icons-react";
+import { Button } from "./ui/button";
 
 const Answers = ({
     answers: _answers,
@@ -95,12 +96,12 @@ const Answers = ({
                             downvotes={answer.downvotesDocuments}
                         />
                         {user?.$id === answer.authorId ? (
-                            <button
+                            <Button
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-red-500 p-1 text-red-500 duration-200 hover:bg-red-500/10"
                                 onClick={() => deleteAnswer(answer.$id)}
                             >
                                 <IconTrash className="h-4 w-4" />
-                            </button>
+                            </Button>
                         ) : null}
                     </div>
                     <div className="w-full overflow-auto">
@@ -108,7 +109,7 @@ const Answers = ({
                         <div className="mt-4 flex items-center justify-end gap-1">
                             <picture>
                                 <img
-                                    src={avatars.getInitials(answer.author.name, 36, 36).href}
+                                    src={avatars.getInitials(answer.author.name, 36, 36)}
                                     alt={answer.author.name}
                                     className="rounded-lg"
                                 />
@@ -139,9 +140,9 @@ const Answers = ({
             <form onSubmit={handleSubmit} className="space-y-2">
                 <h2 className="mb-4 text-xl">Your Answer</h2>
                 <RTE value={newAnswer} onChange={value => setNewAnswer(() => value || "")} />
-                <button className="shrink-0 rounded bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600">
+                <Button className="shrink-0 rounded bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600">
                     Post Your Answer
-                </button>
+                </Button>
             </form>
         </>
     );

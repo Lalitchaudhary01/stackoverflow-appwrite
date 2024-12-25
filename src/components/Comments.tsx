@@ -10,6 +10,7 @@ import { IconTrash } from "@tabler/icons-react";
 import { ID, Models } from "appwrite";
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
 
 const Comments = ({
     comments: _comments,
@@ -80,12 +81,12 @@ const Comments = ({
                             </span>
                         </p>
                         {user?.$id === comment.authorId ? (
-                            <button
+                            <Button
                                 onClick={() => deleteComment(comment.$id)}
                                 className="shrink-0 text-red-500 hover:text-red-600"
                             >
                                 <IconTrash className="h-4 w-4" />
-                            </button>
+                            </Button>
                         ) : null}
                     </div>
                 </React.Fragment>

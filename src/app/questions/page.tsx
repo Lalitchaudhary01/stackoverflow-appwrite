@@ -3,7 +3,7 @@ import { answerCollection, db, voteCollection, questionCollection } from "@/mode
 import { Query } from "node-appwrite";
 import React from "react";
 import Link from "next/link";
-import ShimmerButton from "@/components/magicui/shimmer-button";
+import ShimmerButton from "@/components/ui/shimmer-button";
 import QuestionCard from "@/components/QuestionCard";
 import { UserPrefs } from "@/store/Auth";
 import Pagination from "@/components/Pagination";

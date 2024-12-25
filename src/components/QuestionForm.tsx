@@ -1,7 +1,7 @@
 "use client";
 
 import RTE from "@/components/RTE";
-import Meteors from "@/components/magicui/meteors";
+import Meteors from "./ui/meteors";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/store/Auth";
@@ -13,7 +13,9 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { databases, storage } from "@/models/client/config";
 import { db, questionAttachmentBucket, questionCollection } from "@/models/name";
-import { Confetti } from "@/components/magicui/confetti";
+import { ConfettiButton } from "./ui/confetti";
+import confetti from "canvas-confetti";
+import { Button } from "./ui/button";
 
 const LabelInputContainer = ({
     children,
@@ -63,7 +65,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
         const frame = () => {
             if (Date.now() > end) return;
 
-            Confetti({
+            confetti({
                 particleCount: 2,
                 angle: 60,
                 spread: 55,
@@ -71,7 +73,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                 origin: { x: 0, y: 0.5 },
                 colors: colors,
             });
-            Confetti({
+            confetti({
                 particleCount: 2,
                 angle: 120,
                 spread: 55,
@@ -243,7 +245,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                             onChange={e => setTag(() => e.target.value)}
                         />
                     </div>
-                    <button
+                    <Button
                         className="relative shrink-0 rounded-full border border-slate-600 bg-slate-700 px-8 py-2 text-sm text-white transition duration-200 hover:shadow-2xl hover:shadow-white/[0.1]"
                         type="button"
                         onClick={() => {
@@ -257,7 +259,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                     >
                         <div className="absolute inset-x-0 -top-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-teal-500 to-transparent shadow-2xl" />
                         <span className="relative z-20">Add</span>
-                    </button>
+                    </Button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                     {Array.from(formData.tags).map((tag, index) => (
@@ -268,7 +270,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                                 </span>
                                 <div className="relative z-10 flex items-center space-x-2 rounded-full bg-zinc-950 px-4 py-0.5 ring-1 ring-white/10">
                                     <span>{tag}</span>
-                                    <button
+                                    <Button
                                         onClick={() => {
                                             setFormData(prev => ({
                                                 ...prev,
@@ -280,7 +282,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                                         type="button"
                                     >
                                         <IconX size={12} />
-                                    </button>
+                                    </Button>
                                 </div>
                                 <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
                             </div>
@@ -288,13 +290,13 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                     ))}
                 </div>
             </LabelInputContainer>
-            <button
+            <Button
                 className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
                 type="submit"
                 disabled={loading}
             >
                 {question ? "Update" : "Publish"}
-            </button>
+            </Button>
         </form>
     );
 };
